@@ -1,0 +1,11 @@
+name: Branch Condition 
+
+on: push 
+
+jobs: 
+  branch-condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Branch Condition
+        if: github.ref_name == 'main'
+        run: echo "This job is being run on main."
