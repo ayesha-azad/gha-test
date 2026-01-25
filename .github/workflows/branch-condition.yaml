@@ -1,11 +1,18 @@
-name: Branch Condition 
+name: Branch Condition
 
-on: push 
+on: push
 
-jobs: 
+jobs:
   branch-condition:
     runs-on: ubuntu-latest
     steps:
       - name: Branch Condition
         if: github.ref_name == 'main'
         run: echo "This job is being run on main."
+
+  goodbye-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Goodbye
+        if: github.ref_name == 'feature/something'
+        run: echo "Goodbye from Ayesha Azad from ${{github.repository}} at ${{github.ref_name}} by ${{github.actor}}"
