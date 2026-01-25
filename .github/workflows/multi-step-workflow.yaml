@@ -9,5 +9,7 @@ jobs:
       - name: Printing
         run: |
           date 
-          ls
+          echo "-------------"
+          ls -la
+          echo "-------------"
           hostnamectl
