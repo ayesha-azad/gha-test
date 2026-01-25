@@ -1,0 +1,13 @@
+name: Multi Step Workflow 
+
+on: push 
+
+jobs:
+  multi-step-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing
+        run: |
+          echo date 
+          ls
+          hostnamectl
