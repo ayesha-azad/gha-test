@@ -17,7 +17,7 @@ jobs:
       - name: Commit Length
         run: |
           commit_msg=$(git log -1 --pretty=%B)
-          count=$(#commit_msg)
+          count=${#commit_msg}
           echo $commit_msg
           echo $count
           
