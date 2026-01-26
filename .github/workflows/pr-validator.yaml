@@ -1,0 +1,34 @@
+name: Pull Request Validator 
+
+on: 
+  pull_request:
+    types: 
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  pr-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit Length
+        run: |
+          commit_msg=$(git log -1 --pretty=%B)
+          count=$(#commit_msg)
+          echo $commit_msg
+          echo $count
+      - name: Number of console.log
+        run: | 
+          console_num=$(grep -R -o "console.\log" . | wc -l)
+          echo $console_num
+      - name: Check Code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test 
