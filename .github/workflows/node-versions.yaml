@@ -1,0 +1,29 @@
+name: Matrix for Node Versions
+
+on: push 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    strategy:
+      fail-fast: true 
+      matrix:
+        node-vers: [16, 18, 30]
+    steps:
+      - name: Print Every Version 
+        run: echo "The node version is ${{matrix.node-vers}}"
+
+      - name: Check Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{matrix.node-vers}}
+          cache: npm
+
+      - name: Install Dependencies 
+        run: npm ci
+
+      - name: Run Test
+        run: npm test 
