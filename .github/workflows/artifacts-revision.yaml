@@ -1,0 +1,17 @@
+name: Revise Artifacts
+
+on: push
+
+jobs:
+  artifacts:
+    runs-on: ubuntu-machine
+    steps:
+      - name: Add to Artifact
+        run: echo "This is an artifact by Ayesha Azad." >> artifact.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: artifact.txt
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
