@@ -4,7 +4,7 @@ on: push
 
 jobs:
   artifacts:
-    runs-on: ubuntu-machine
+    runs-on: ubuntu-latest
     steps:
       - name: Add to Artifact
         run: echo "This is an artifact by Ayesha Azad." >> artifact.txt
