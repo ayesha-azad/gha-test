@@ -1,12 +1,12 @@
-name: Checking action 
+name: Checking action
 
-on: push 
+on: push
 
 jobs:
   check-action:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Action 
-        uses: ./.github/actions
+      - name: Run Action
+        uses: ./.github/actions/composite-action
         with:
           greet: "Ayesha Azad"
