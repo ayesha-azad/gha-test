@@ -1,0 +1,21 @@
+name: Discord Notification Webhooks 
+
+on: push 
+
+jobs:
+  discord-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success 
+        if: success()
+        run: |
+          curl -H "application/json" \
+          -d '{"content", "Job Successfull"}' \
+          ${{secrets.DISCORD_WEBHOOK_URL}}
+
+      - name: Failure 
+        if: failure()
+        run: | 
+          curl -H "application/json" \
+          -d '{"content", "Job Failure"}' \
+          ${{secrets.DISCORD_WEBHOOK_URL}}

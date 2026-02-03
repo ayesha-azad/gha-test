@@ -11,8 +11,8 @@ jobs:
   pr-validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Download git
-        run: sudo apt update && sudo apt install git -y
+      - name: Code Check
+        uses: actions/checkout@v4
   
       - name: Commit Length
         run: |
@@ -23,7 +23,7 @@ jobs:
           
       - name: Number of console.log
         run: | 
-          console_num=$(grep -R -o "console.\log" . | wc -l)
+          console_num=$(grep -R -o "console\.log" . | wc -l)
           echo $console_num
           
       - name: Check Code
