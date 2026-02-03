@@ -16,4 +16,4 @@ jobs:
           greet: "Ayesha Azad"
 
       - name: Check Output
-        run: echo "${{steps.run-action.outputs.greeting}}"
+        run: echo "Workflow received: ${{steps.run-action.outputs.greeting}}"
