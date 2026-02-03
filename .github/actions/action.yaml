@@ -1,3 +1,24 @@
 name: Composite Action
+description: Checking Composite Action
+
+inputs:
+  greet:
+    description: Enter a name to greet
+    default: Ayesha
+    required: true
+
+outputs:
+  greeting:
+    description: Enter a greeting
 
 runs:
+  using: "composite"
+  steps:
+    - name: Add output
+      id: greet-id
+      run: echo "Hello" >> "$GITHUB_OUTPUT"
+      shell: bash 
+
+    - name: Add Input
+      run: echo ${{steps.greet-id.outputs.greeting}} ${{ inputs.greet }} 
+      shell: bash
