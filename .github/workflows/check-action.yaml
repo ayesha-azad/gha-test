@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Action
-        uses: ./.github/actions/composite-action
+        uses: ./.github/actions/composite-action/action.yaml
         with:
           greet: "Ayesha Azad"
