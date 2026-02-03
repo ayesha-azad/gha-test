@@ -9,6 +9,7 @@ inputs:
 
 outputs:
   greeting:
+    description: Greeting message
     value: ${{steps.greet-id.outputs.greeting}}
 
 runs:
@@ -17,8 +18,8 @@ runs:
     - name: Add output
       id: greet-id
       run: echo "greeting=Hello" >> "$GITHUB_OUTPUT"
-      shell: bash 
+      shell: bash
 
     - name: Add Input
-      run: echo ${{steps.greet-id.outputs.greeting}} ${{ inputs.greet }} 
+      run: echo "${{steps.greet-id.outputs.greeting}} ${{ inputs.greet }}"
       shell: bash
