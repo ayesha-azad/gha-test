@@ -9,14 +9,14 @@ inputs:
 
 outputs:
   greeting:
-    description: Enter a greeting
+    value: ${{steps.greet-id.outputs.greeting}}
 
 runs:
   using: "composite"
   steps:
     - name: Add output
       id: greet-id
-      run: echo "Hello" >> "$GITHUB_OUTPUT"
+      run: echo "greeting=Hello" >> "$GITHUB_OUTPUT"
       shell: bash 
 
     - name: Add Input
