@@ -1,0 +1,22 @@
+name: File Existence Check
+description: This action will check if the file exists
+
+outputs:
+  exists:
+    description: Enter file name to check if it exists 
+    value: ${{ steps.exist-id.outputs.exists }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check File
+      id: exist-id
+      run: |
+        file="check-action.yaml"
+        if [ -e $file ]
+        then
+          exists=true
+        else
+          exists=false
+        fi
+      shell: bash
