@@ -1,0 +1,13 @@
+name: GitHUB ENV
+description: Checking GITHUB ENV
+
+runs:
+  using: composite
+  steps:
+    - name: Setting Environment Variable 
+      run: echo "name=Ayesha" >> "$GITHUB_ENV"
+      shell: bash
+
+    - name: Using Environment Variable 
+      run: echo "$name"
+      shell: bash
