@@ -16,4 +16,11 @@ jobs:
           file: index.js
 
       - name: Get Output 
-        run: echo "The file ${{ steps.exist-id.outputs.exists }}"
+        run: |
+          if [[ ${{ steps.exist-id.outputs.exists }} == "true" ]]
+          then
+            echo "The file exists."
+          else 
+            echo "The file does not exist."
+          fi 
+          
