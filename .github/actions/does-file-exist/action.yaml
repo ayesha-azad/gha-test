@@ -15,8 +15,9 @@ runs:
         file="check-action.yaml"
         if [ -e $file ]
         then
-          exists=true
+          echo "exists=true" >> "$GITHUB_OUTPUT"
         else
-          exists=false
+          echo "exists=false" >> "$GITHUB_OUTPUT"
         fi
       shell: bash
+
