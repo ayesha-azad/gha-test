@@ -1,0 +1,20 @@
+name: Masked Value
+description: Masked Value will be observed here
+
+inputs:
+  masked-input:
+    description: Enter masked value
+    default: Ayesha 
+
+runs:
+  using: composite
+  steps:
+    - name: Add Masked Input
+      run: |
+        name="${{inputs.masked-input}}"
+        echo "::add-mask::name=Umer" >> "$GITHUB_ENV"
+      shell: bash
+      
+    - name: Get Masked Output 
+      run: echo $name
+      shell: bash
