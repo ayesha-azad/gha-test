@@ -8,20 +8,16 @@ inputs:
 
 outputs:
   length:
-    description: Length of secret 
+    description: Length of secret
     value: ${{ steps.str-id.outputs.str_len }}
-  
+
 runs:
   using: composite
   steps:
     - name: Check length of a secret
       id: str-id
       run: |
-        my_string=${{inputs.secret}}
-        length=${#mystring}
-        echo "str_len=$length" >> "GITHUB_OUTPUT"
+        my_string="${{ inputs.secret }}"
+        length=${#my_string}
+        echo "str_len=$length" >> "$GITHUB_OUTPUT"
       shell: bash
-
-
-
-
