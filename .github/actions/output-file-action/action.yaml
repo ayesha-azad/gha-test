@@ -1,0 +1,34 @@
+name: Output File Action
+description: Action outputting data in an output file
+
+outputs:
+  output-path: 
+    description: Enter a file for output data
+    value: ${{ steps.output-id.outputs.output-path }} 
+
+runs:
+  using: "composite"
+  steps:
+    - name: Adding something to output file
+      run: echo date >> output.txt
+      shell: bash
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        path: output.txt
+        name: output
+
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: output.txt
+        name: output
+
+    - name: Output Path
+      id: output-id 
+      run: | 
+        output=output-path
+        echo "output=output.txt" >> "$GITHUB_OUTPUT"
+      shell: bash
+      
