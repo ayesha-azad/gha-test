@@ -1,0 +1,17 @@
+name: Check file
+
+on: push
+
+jobs:
+  check-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Checking if a file exists 
+        id: exist-id
+        uses: ./.github/actions/does-file-exist
+
+      - name: Get Output 
+        run: echo "The file ${{ steps.exist-id.outputs.exists }}"
