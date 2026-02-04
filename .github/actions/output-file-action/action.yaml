@@ -19,16 +19,11 @@ runs:
         path: output.txt
         name: output
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        path: output.txt
-        name: output
-
     - name: Output Path
       id: output-id 
       run: echo "output-path=output.txt" >> "$GITHUB_OUTPUT"
       shell: bash
       
+
 
 
