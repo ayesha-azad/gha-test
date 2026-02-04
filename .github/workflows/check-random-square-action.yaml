@@ -6,6 +6,10 @@ jobs:
   random-square-gen:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
       - name: Testing Action
         id: random-num-id
         uses: ./.github/actions/another-composite-action
