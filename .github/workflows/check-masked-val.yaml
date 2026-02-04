@@ -1,0 +1,15 @@
+name: Check Masked Value
+
+on: push
+
+jobs:
+  check-masked-val:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Masked Value
+        uses: ./.github/actions/masked-values
+        with: 
+          masked-input: "Summaiya"
