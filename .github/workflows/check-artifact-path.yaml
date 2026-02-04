@@ -1,0 +1,17 @@
+name: Checking Output 
+
+on: push 
+
+jobs: 
+  checking-path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Repository
+        uses: actions/checkout@v4
+
+      - name: Use action
+        id: new-output-id
+        uses: ./.github/actions/output-file-action
+
+      - name: Output file Path
+        run: ${{ steps.new-output-id.outputs.output-path}}
