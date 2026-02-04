@@ -1,0 +1,28 @@
+name: Another Composite Action
+description: Adding and Testing another composite Action
+
+inputs:
+  number: 
+    description: Enter a number to get square
+    default: 1
+    required: true 
+
+outputs:
+  random-number:
+    value: ${{ steps.random-id.outputs.random }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Getting square of a number
+      run: |
+        num=${{inputs.number}}
+        echo $(( num*num ))
+      shell: bash
+      
+    - name: Getting Random Number
+      id: random-id
+      run: |
+        echo "random=$RANDOM" >> "$GITHUB_OUTPUT"
+      shell: bash
+    
