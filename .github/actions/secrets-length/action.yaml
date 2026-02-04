@@ -19,6 +19,7 @@ runs:
       run: |
         my_string=${{inputs.secret}}
         str_len=${#mystring}
-        echo str_len >> "GITHUB_OUTPUT"
+        echo $str_len >> "GITHUB_OUTPUT"
       shell: bash
+
 
