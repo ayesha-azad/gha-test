@@ -12,6 +12,8 @@ jobs:
       - name: Checking if a file exists 
         id: exist-id
         uses: ./.github/actions/does-file-exist
+        with:
+          file: index.js
 
       - name: Get Output 
         run: echo "The file ${{ steps.exist-id.outputs.exists }}"
