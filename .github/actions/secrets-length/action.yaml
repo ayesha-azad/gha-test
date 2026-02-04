@@ -1,0 +1,23 @@
+name: Secret Length
+description: Check length of any secret
+
+inputs:
+  secret:
+    description: Enter a secret to check length
+    required: true
+
+outputs:
+  length:
+    description: Length of secret 
+    value: ${{ steps.str-id.outputs.str_len }}
+  
+runs:
+  using: composite
+  steps:
+    - name: Check length of a secret
+      id: str-id
+      run: |
+        my_string=${{inputs.secret}}
+        str_len=$(#mystring)
+        echo str_len >> "GITHUB_OUTPUT"
+      shell: bash
