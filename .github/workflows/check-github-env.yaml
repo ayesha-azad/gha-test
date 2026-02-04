@@ -1,0 +1,13 @@
+name: Check Github Env
+
+on: push
+
+jobs:
+  check-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 
+        uses: actions/checkout@v4
+
+      - name: Use Action
+        uses: ./.github/actions/github-env
