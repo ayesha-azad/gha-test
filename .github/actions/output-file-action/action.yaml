@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Adding something to output file
-      run: echo date >> "output.txt"
+      run: echo "$(date)" >> output.txt
       shell: bash
 
     - name: Upload Artifacts
@@ -27,9 +27,8 @@ runs:
 
     - name: Output Path
       id: output-id 
-      run: | 
-        output=output-path
-        echo "output=output.txt" >> "$GITHUB_OUTPUT"
+      run: echo "output-path=output.txt" >> "$GITHUB_OUTPUT"
       shell: bash
       
+
 
