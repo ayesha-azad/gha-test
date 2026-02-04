@@ -1,6 +1,11 @@
 name: File Existence Check
 description: This action will check if the file exists
 
+inputs:
+  file:
+    description: Enter file name
+    default: "../../../index.js"
+
 outputs:
   exists:
     description: Enter file name to check if it exists 
@@ -12,7 +17,7 @@ runs:
     - name: Check File
       id: exist-id
       run: |
-        file="check-action.yaml"
+        file=${{ inputs.file }}
         if [ -e $file ]
         then
           echo "exists=true" >> "$GITHUB_OUTPUT"
@@ -20,4 +25,5 @@ runs:
           echo "exists=false" >> "$GITHUB_OUTPUT"
         fi
       shell: bash
+
 
