@@ -14,4 +14,4 @@ jobs:
         uses: ./.github/actions/output-file-action
 
       - name: Output file Path
-        run: ${{ steps.new-output-id.outputs.output-path}}
+        run: echo "Output is ${{ steps.new-output-id.outputs.output-path}}"
