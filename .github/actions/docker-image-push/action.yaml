@@ -1,13 +1,26 @@
 name: Docker Image Push
 description: Docker Image being pushed to docker hub
 
+inputs:
+  user:
+    description: Enter user
+  pass:
+    description: Enter pass
+
 runs:
-  using: composite
+  using: "composite"
   steps:
   
     - name: Docker Compose
       run: docker compose build
       shell: bash
+
+      
+    - name: Docker login
+      uses: action/login-action@v3
+      with:
+        username: ${{ inputs.user }}
+        password: ${{ inputs.pass }}
 
     - name: Docker push
       run: docker push ayeshaazad/my-app
@@ -16,5 +29,6 @@ runs:
     - name: Docker Run
       run: docker compose up -d
       shell: bash
+
 
 
