@@ -1,0 +1,20 @@
+name: Docker Inputs Action
+description: Action for taking Inputs of Docker Action
+
+inputs:
+  context:
+    description: "Add image context"
+    default: "."
+  image_name:
+    description: "Add image name"
+    required: true
+  tag:
+    description: "Add image tag"
+    default: "v1"
+
+runs:
+  using: composite
+  steps:
+    - name: Using Inputs
+      run: docker build -t ${{inputs.image_name}}:${{inputs.tag}} ${{inputs.context}}
+      shell: bash 

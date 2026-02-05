@@ -1,0 +1,22 @@
+name: Check Docker Inputs
+
+on: push
+
+jobs:
+  check-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Docker build
+        uses: ./.github/actions/docker-inputs
+        with:
+          context: "."
+          image_name: "gha-test-new"
+          tag: "v2"
+
+      - name: Docker Run
+        run: docker run -d gha-test-new:v2
+        
+        
