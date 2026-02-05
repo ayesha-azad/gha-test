@@ -11,7 +11,7 @@ runs:
   using: composite
   steps:
     - name: Login Docker
-      run: echo "${{inputs.passwor}}" | docker login --username ${{inputs.username}} --password-stdin
+      run: echo "${{inputs.password}}" | docker login --username ${{inputs.username}} --password-stdin
       shell: bash
 
     - name: Check Failure
