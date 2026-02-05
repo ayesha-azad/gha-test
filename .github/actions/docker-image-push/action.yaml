@@ -1,0 +1,25 @@
+name: Docker Image Push
+description: Docker Image being pushed to docker hub
+
+inputs:
+  username:
+    description: Enter username
+  password:
+    description: Enter password
+
+runs:
+  using: composite
+  steps:
+    - name: Login docker
+      uses: actions/login-action@v3
+      with:
+        username: ${{inputs.username}}
+        password: ${{inputs.password}}
+
+    - name: Docker Compose
+      run: docker compose build
+      shell: bash
+
+    - name: Docker push
+      run: docker push ${{inputs.username}}/my-app
+      shell: bash
