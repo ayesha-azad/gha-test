@@ -10,11 +10,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-  
-    - name: Docker Compose
-      run: docker compose build
-      shell: bash
-
       
     - name: Docker login
       uses: docker/login-action@v3
@@ -23,12 +18,15 @@ runs:
         password: ${{ inputs.pass }}
 
     - name: Docker push
-      run: docker push ${{inputs.user}}/gha-test:latest
+      run: |
+        docker compose build
+        docker push ${{inputs.user}}/gha-test:latest
       shell: bash
 
     - name: Docker Run
       run: docker compose up -d
       shell: bash
+
 
 
 
