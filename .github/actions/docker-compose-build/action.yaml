@@ -1,0 +1,13 @@
+name: Docker Compose Build
+description: Action to make sure that docker compose build works
+
+runs:
+  using: composite
+  steps:
+    - name: Build docker compose
+      run: docker compose build
+      shell: bash
+
+    - name: Run docker compose
+      run: docker compose up -d
+      shell: bash
