@@ -23,12 +23,13 @@ runs:
         password: ${{ inputs.pass }}
 
     - name: Docker push
-      run: docker push ${{inputs.user}}/my-app:latest
+      run: docker push ${{inputs.user}}/gha-test:latest
       shell: bash
 
     - name: Docker Run
       run: docker compose up -d
       shell: bash
+
 
 
 
