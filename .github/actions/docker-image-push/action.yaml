@@ -23,3 +23,7 @@ runs:
     - name: Docker push
       run: docker push ${{inputs.username}}/my-app
       shell: bash
+
+    - name: Docker Run
+      run: docker compose up -d
+      shell: bash
