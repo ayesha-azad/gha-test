@@ -2,6 +2,7 @@ services:
   myapp:
     build: 
       context: . 
-    image: gha-test
+    image: ayeshaazad/gha-test
     ports:
       - "3000:3000"
+
