@@ -13,3 +13,8 @@ runs:
     - name: Login Docker
       run: echo "${{inputs.password}}" | docker login --username ${{inputs.username}} --password-stdin
       shell: bash
+
+    - name: Check Failure
+      if: failure()
+      run: echo "Docker cannot login."
+      shell: bash
