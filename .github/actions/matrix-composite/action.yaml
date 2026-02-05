@@ -1,0 +1,13 @@
+name: Matrix Composite Action
+description: Matrix action for matrix values
+
+inputs:
+  data:
+    description: Enter data 
+
+runs:
+  using: "composite"
+  steps:
+    - name: Test Matrix
+      run: echo "This action is made by ${{inputs.data}}."
+      shell: bash 
