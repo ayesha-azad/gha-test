@@ -1,0 +1,13 @@
+name: Check Docker Push
+
+on: push
+
+jobs:
+  docker-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Use docker compose
+        uses: ./.github/actions/docker-image-push
