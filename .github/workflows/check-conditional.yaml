@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Check Conditions
         uses: ./.github/actions/conditional-action
@@ -24,4 +26,6 @@ jobs:
         run: npm ci
 
       - name: Linting
-        run: npm run lint
+        uses: super-linter/super-linter@v8.4.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
