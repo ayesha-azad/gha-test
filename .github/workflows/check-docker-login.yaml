@@ -1,0 +1,16 @@
+name: Docker Login
+
+on: push
+
+jobs:
+  docker-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 
+        run: actions/checkout@v4
+
+      - name: Docker Login
+        uses: ./.github/actions/docker-login
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
