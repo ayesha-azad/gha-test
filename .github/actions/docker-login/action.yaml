@@ -1,1 +1,15 @@
-name:
+name: Docker Login
+description: Write your own action to login to docker
+
+inputs:
+  username:
+    description: Add username
+  password:
+    description: Add password 
+
+runs:
+  using: composite
+  steps:
+    - name: Login Docker
+      run: echo "${{inputs.password}}" | docker login --username ${{inputs.username}} --password-stdin
+      shell: bash
