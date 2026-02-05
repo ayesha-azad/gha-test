@@ -17,6 +17,6 @@ jobs:
           tag: "v2"
 
       - name: Docker Run
-        run: docker run gha-test-new:v2
+        run: docker run gha-test-new:v2 -d
         
         
