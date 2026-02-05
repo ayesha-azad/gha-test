@@ -1,0 +1,13 @@
+name: Check conditional execution
+
+on: push
+
+jobs:
+  test-conditional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Conditions
+        uses: ./.github/actions/conditional-action
