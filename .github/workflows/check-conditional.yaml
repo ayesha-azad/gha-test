@@ -11,3 +11,5 @@ jobs:
 
       - name: Check Conditions
         uses: ./.github/actions/conditional-action
+        with:
+          push: "true"
