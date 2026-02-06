@@ -28,7 +28,7 @@ jobs:
         if: |
           (matrix.services == 'frontend' && steps.filter.outputs.frontend == 'true') ||
           (matrix.services == 'backend' && steps.filter.outputs.backend == 'true')
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
