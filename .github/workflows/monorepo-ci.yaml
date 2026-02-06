@@ -49,4 +49,5 @@ jobs:
           (matrix.services == 'frontend' && steps.filter.outputs.frontend == 'true') ||
           (matrix.services == 'backend' && steps.filter.outputs.backend == 'true')
         run: npm run build
+        working-directory: ${{matrix.services}}
         # run: node ${{matrix.services}}/index.js
