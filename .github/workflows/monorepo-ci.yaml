@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Filter Folders
         id: filter
-        uses: dorny/paths-filter@v4
+        uses: dorny/paths-filter@v3
         with:
           filters: | 
             frontend:
@@ -40,7 +40,7 @@ jobs:
         if: |
           (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
           (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
           cache: 'npm'
