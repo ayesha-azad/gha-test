@@ -29,22 +29,31 @@ jobs:
     strategy:
       matrix:
         services: ["frontend", "backend"]
-    if: |
-      (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
-      (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
     steps:
       - name: Checkout Repository
+        if: |
+          (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
+          (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
         uses: actions/checkout@v4
 
       - name: Setup Node
+        if: |
+          (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
+          (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
+        if: |
+          (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
+          (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
         run: npm ci
 
       - name: Run code
+        if: |
+          (matrix.services == 'frontend' && needs.config-filter.outputs.frontend == 'true') || 
+          (matrix.services == 'backend' && needs.config-filter.outputs.backend == 'true')
         run: node index.js
           
