@@ -11,6 +11,9 @@ jobs:
       matrix:
         services: ["frontend", "backend"]
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
       - name: Use Dornys Paths Filter
         id: filter 
         uses: dorny/paths-filter@v3
@@ -21,16 +24,10 @@ jobs:
             backend:
               - "backend/**"
         
-      - name: Checkout Repository
-        if: |
-          (matrix.services == 'frontend' && steps.filter.outputs.frontend == 'true') ||
-          (matrix.services == 'backend' && steps.filter.outputs.frontend == 'true')
-        uses: actions/checkout@v4
-        
       - name: Setup Node
         if: |
           (matrix.services == 'frontend' && steps.filter.outputs.frontend == 'true') ||
-          (matrix.services == 'backend' && steps.filter.outputs.frontend == 'true')
+          (matrix.services == 'backend' && steps.filter.outputs.backend == 'true')
         uses: actions/setup-node@v5
         with:
           node-version: "20"
@@ -40,10 +37,12 @@ jobs:
         if: |
           (matrix.services == 'frontend' && steps.filter.outputs.frontend == 'true') ||
           (matrix.services == 'backend' && steps.filter.outputs.frontend == 'true')
-        run: |
-          cd ${{matrix.services}}
-          npm ci 
-          cd .. 
+        run: npm ci 
+        working-directory: ${{matrix.services}}
+        # run: |
+        #   cd ${{matrix.services}}
+        #   npm ci 
+        #   cd .. 
 
       - name: Run Code
         if: |
